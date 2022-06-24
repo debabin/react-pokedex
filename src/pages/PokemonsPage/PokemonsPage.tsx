@@ -5,7 +5,7 @@ import { useRequestPokemonQueries } from '@utils/api';
 import { Pokemon } from './Pokemon/Pokemon';
 
 export const PokemonsPage = () => {
-  const [offset, setOffset] = React.useState(20);
+  const [offset, setOffset] = React.useState(10);
   const results = useRequestPokemonQueries({ offset });
   const isLoading = results.some((result) => result.isLoading);
 

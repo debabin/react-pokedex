@@ -20,7 +20,9 @@
       "@common": ["./common"],
       "@common/*": ["./common/*"],
       "@pages": ["./pages"],
-      "@utils/api": ["./utils/api"]
+      "@utils/api": ["./utils/api"],
+      "@utils/constants": ["./utils/constants"],
+      "@utils/helpers": ["./utils/helpers"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

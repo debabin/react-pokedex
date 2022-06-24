@@ -1,0 +1,24 @@
+.page {
+  @apply flex justify-center items-center h-screen;
+}
+
+.content {
+  @apply flex justify-between;
+}
+
+.pokemon_item {
+  @apply flex bg-zinc-500 opacity-80 mb-4 overflow-hidden shadow-xl justify-center items-center py-3 px-4 rounded-l-full transition-transform;
+  @apply hover:cursor-pointer hover:bg-black hover:scale-105;
+
+  @apply text-lg capitalize text-white font-bold;
+}
+
+.pokemon_item_active {
+  @apply bg-red-400;
+
+  @apply hover:bg-red-400;
+}
+
+.pokemon_item_image {
+  @apply rounded-full w-20 h-20 opacity-100 scale-150 mr-6;
+}

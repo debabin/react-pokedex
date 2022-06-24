@@ -10,7 +10,9 @@ export default defineConfig({
       '@common': path.resolve(__dirname, './src/common'),
       '@common/*': path.resolve(__dirname, './src/common/*'),
       '@pages': path.resolve(__dirname, './src/pages'),
-      '@utils/api': path.resolve(__dirname, './src/utils/api')
+      '@utils/api': path.resolve(__dirname, './src/utils/api'),
+      '@utils/constants': path.resolve(__dirname, './src/utils/constants'),
+      '@utils/helpers': path.resolve(__dirname, './src/utils/helpers')
     }
   }
 });
