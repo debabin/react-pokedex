@@ -4,8 +4,6 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { App } from './App';
 
-import './index.css';
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

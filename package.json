@@ -6,8 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint src/**/*.{tsx,ts}",
-    "lint:fix": "eslint src/**/*.{tsx,ts} --fix"
+    "lint": "eslint src/**/*.{tsx,ts}"
   },
   "dependencies": {
     "axios": "^0.27.2",
