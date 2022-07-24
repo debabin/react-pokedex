@@ -1,0 +1,24 @@
+.page {
+  @apply container px-4 pb-4;
+}
+
+.name_container {
+  @apply flex gap-2 justify-start items-end;
+  @apply font-bold text-2xl text-black capitalize;
+}
+
+.number {
+  @apply font-light text-base;
+}
+
+.content {
+  @apply flex flex-col gap-3;
+}
+
+.image_container img {
+  @apply w-full h-full;
+}
+
+.button_container {
+  @apply flex flex-col gap-2;
+}

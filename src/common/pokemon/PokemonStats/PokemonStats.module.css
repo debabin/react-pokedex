@@ -1,0 +1,7 @@
+.title {
+  @apply font-bold text-2xl text-black;
+}
+
+.stats li {
+  @apply border-b-2 pb-1 mt-1;
+}

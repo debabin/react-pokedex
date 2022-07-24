@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 
 import { api } from '../../../instance';
 
-interface RequestPokemonFormParams {
+export interface RequestPokemonFormParams {
   params: { id: number };
   config?: AxiosRequestConfig;
 }

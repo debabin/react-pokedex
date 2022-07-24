@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import React from 'react';
 
 import { PokemonCard } from '@common';
-import { useRequestEvolutionChainQuery, useRequestPokemonQueries } from '@utils/api';
+import { useRequestEvolutionChainQuery, useRequestPokemonsQueries } from '@utils/api';
 
 import styles from './PokedexPage.module.css';
 
@@ -10,11 +10,11 @@ export const PokedexPage = () => {
   const [offset, setOffset] = React.useState(1);
   const [selectedPokemonId, setSelectedPokemonId] = React.useState(1);
 
-  const results = useRequestPokemonQueries({ offset });
+  const results = useRequestPokemonsQueries({ offset });
   const isLoading = results.some((result) => result.isLoading);
   const { data } = useRequestEvolutionChainQuery({
     params: { id: selectedPokemonId },
-    config: { enabled: !isLoading, cacheTime: 3000 }
+    options: { enabled: !isLoading, cacheTime: 3000 }
   });
 
   if (isLoading) return null;

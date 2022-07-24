@@ -1,0 +1,59 @@
+.type {
+  @apply py-1 px-3 rounded-xl bg-inherit;
+}
+
+.grass {
+  @apply text-green-700 border-2 border-green-700;
+}
+
+.poison {
+  @apply text-purple-700 border-2 border-purple-700;
+}
+
+.fire {
+  @apply text-orange-600 border-2 border-orange-600;
+}
+
+.flying {
+  @apply text-sky-600 border-2 border-sky-600;
+}
+
+.water {
+  @apply text-blue-400 border-2 border-blue-400;
+}
+
+.electric {
+  @apply text-yellow-500 border-2 border-yellow-500;
+}
+
+.ground {
+  @apply text-yellow-700 border-2 border-yellow-700;
+}
+
+.dark {
+  @apply text-slate-600 border-2 border-slate-600;
+}
+
+.ice {
+  @apply text-cyan-600 border-2 border-cyan-600;
+}
+
+.fairy {
+  @apply text-pink-700 border-2 border-pink-700;
+}
+
+.psychic {
+  @apply text-violet-700 border-2 border-violet-700;
+}
+
+.bug {
+  @apply text-lime-600 border-2 border-lime-600;
+}
+
+.normal {
+  @apply text-neutral-600 border-2 border-neutral-600;
+}
+
+.fighting {
+  @apply text-red-700 border-2 border-red-700;
+}

@@ -8,4 +8,4 @@ interface RequestEvolutionChainParams {
 }
 
 export const requestEvolutionChain = ({ params, config }: RequestEvolutionChainParams) =>
-  api.get<Pokemon>(`evolution-chain/${params.id}`, { ...config });
+  api.get<EvolutionChain>(`evolution-chain/${params.id}`, { ...config });

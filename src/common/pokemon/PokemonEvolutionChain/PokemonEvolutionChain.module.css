@@ -1,0 +1,7 @@
+.container {
+  @apply py-5 flex flex-col gap-3;
+}
+
+.evolutions_container {
+  @apply flex justify-between mt-2 flex-col gap-4;
+}

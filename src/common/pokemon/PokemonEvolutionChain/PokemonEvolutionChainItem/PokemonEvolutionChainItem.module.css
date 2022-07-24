@@ -1,0 +1,22 @@
+.evolution {
+  @apply flex w-full rounded-lg shadow-lg border-2 overflow-hidden;
+}
+
+.image_container {
+  @apply w-5/12;
+}
+
+.image_container img {
+  @apply h-full;
+
+  transform: scale(2);
+  transform-origin: 20% 40%;
+}
+
+.name {
+  @apply font-semibold text-lg text-left;
+}
+
+.info {
+  @apply flex flex-col gap-2 p-5;
+}
