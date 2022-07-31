@@ -17,6 +17,7 @@ export const Header: FC = () => (
       <div className={styles.header_navigation}>
         <Link to={ROUTES.POKEMONS}>Pokemons</Link>
         <Link to={ROUTES.POKEDEX}>Pokedex</Link>
+        <Link to={ROUTES.PROFILE}>Profile</Link>
       </div>
     </div>
   </div>

@@ -4,7 +4,12 @@ module.exports = {
     container: {
       center: true
     },
-    extend: {}
+    extend: {
+      backgroundImage: {
+        cover: 'var(--image-cover)',
+        logo: 'var(--image-logo)'
+      }
+    }
   },
   plugins: []
 };

@@ -1,0 +1,11 @@
+.container {
+  @apply flex items-center;
+}
+
+.line {
+  @apply flex-grow border-t border-gray-400;
+}
+
+.title {
+  @apply mx-4 flex-shrink text-gray-400;
+}

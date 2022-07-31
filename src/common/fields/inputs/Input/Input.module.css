@@ -1,0 +1,16 @@
+.input {
+  @apply w-full rounded-md bg-inherit bg-white p-3 shadow-sm;
+  @apply focus:outline-none focus:ring-2;
+}
+
+.input_error {
+  @apply bg-red-100 ring-1 ring-red-400;
+}
+
+.label {
+  @apply mb-1 text-sm font-semibold;
+}
+
+.error {
+  @apply text-sm text-red-400;
+}

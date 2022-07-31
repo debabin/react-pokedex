@@ -1,77 +1,37 @@
 .button {
-  @apply flex justify-center items-center;
-  @apply h-12 w-full shadow-md rounded-xl cursor-pointer;
+  @apply flex items-center justify-center;
+  @apply h-12 w-full cursor-pointer rounded-lg bg-inherit shadow-md;
   @apply text-lg font-medium;
 
   @apply shadow-sm;
 }
 
-.contained {
-  @apply bg-sky-600 text-white;
-  @apply hover:bg-sky-500;
+.contained,
+.contained[type='button'],
+.contained[type='reset'],
+.contained[type='submit'] {
+  @apply bg-blue-500 text-white;
+  @apply hover:bg-blue-400;
 }
 
-.outlined {
-  @apply bg-inherit text-sky-600 border-sky-600 border-2;
-  @apply hover:text-sky-500 hover:border-sky-500;
+.outlined,
+.outlined[type='button'],
+.outlined[type='reset'],
+.outlined[type='submit'] {
+  @apply border-2 border-blue-500 bg-inherit text-blue-500;
+  @apply hover:border-blue-400 hover:text-blue-400;
+  @apply active:border-blue-500 active:text-blue-500;
 }
 
-.button:active {
-  background: var(--color-accent7);
+.text,
+.text[type='button'],
+.text[type='reset'],
+.text[type='submit'] {
+  @apply bg-inherit text-neutral-500 shadow-none;
+  @apply hover:text-neutral-400;
+  @apply active:text-neutral-500;
 }
 
-.button:disabled {
-  background: var(--color-accent7);
-  box-shadow: var(--shadow-button-hover);
-}
-
-.dot-flashing {
-  position: relative;
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 0.35rem;
-  background-color: #fff;
-  color: #fff;
-  animation: dotFlashing 0.5s infinite linear alternate;
-  animation-delay: 0.25s;
-}
-
-.dot-flashing::before,
-.dot-flashing::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top: 0;
-}
-
-.dot-flashing::before {
-  left: -0.71rem;
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 0.35rem;
-  background-color: #fff;
-  color: #fff;
-  animation: dotFlashing 0.5s infinite alternate;
-  animation-delay: 0s;
-}
-
-.dot-flashing::after {
-  left: 0.71rem;
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 0.35rem;
-  background-color: #fff;
-  color: #fff;
-  animation: dotFlashing 0.5s infinite alternate;
-  animation-delay: 0.5s;
-}
-
-@keyframes dotFlashing {
-  0% {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  50%,
-  100% {
-    background-color: #fff;
-  }
+.startIcon {
+  @apply mr-3 h-6 w-6;
 }

@@ -1,17 +1,13 @@
-body {
-  @apply pt-32;
-}
-
 .header {
-  @apply shadow-md fixed top-0 w-full bg-white;
+  @apply w-full bg-white shadow-md;
 }
 
 .header_container {
-  @apply flex container py-5 justify-between;
+  @apply container flex justify-between py-5;
 }
 
 .header_left {
-  @apply flex gap-6 justify-center items-center;
+  @apply flex items-center justify-center gap-6;
 }
 
 .header_logo {
@@ -19,14 +15,14 @@ body {
 }
 
 .header_quote {
-  @apply font-light text-base;
+  @apply text-base font-light;
 }
 
 .header_navigation {
-  @apply flex gap-5 justify-center items-center;
+  @apply flex items-center justify-center gap-5;
 }
 
 .header_navigation a {
-  @apply font-normal cursor-pointer text-lg;
+  @apply cursor-pointer text-lg font-normal;
   @apply hover:underline;
 }

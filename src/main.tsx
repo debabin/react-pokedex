@@ -2,6 +2,8 @@ import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import { StoreProvider } from '@utils/contexts';
+
 import { App } from './App';
 
 const queryClient = new QueryClient({
@@ -17,7 +19,9 @@ const root = createRoot(container);
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <StoreProvider>
+      <App />
+    </StoreProvider>
     <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
 );

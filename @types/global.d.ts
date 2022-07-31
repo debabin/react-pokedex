@@ -1,3 +1,11 @@
+type $TSFixMe = any;
+
+type User = {
+  name: string;
+  email: string;
+  city: string;
+};
+
 /**
  * The name and the URL of the referenced resource
  */

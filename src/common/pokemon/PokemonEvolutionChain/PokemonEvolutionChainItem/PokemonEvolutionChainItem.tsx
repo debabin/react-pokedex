@@ -1,11 +1,11 @@
-import React from 'react';
 import classnames from 'classnames';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { PokemonTypes } from '@common/pokemon/PokemonTypes/PokemonTypes';
 import { useRequestPokemonByNameQuery } from '@utils/api';
 
 import styles from './PokemonEvolutionChainItem.module.css';
-import { PokemonTypes } from '@common/pokemon/PokemonTypes/PokemonTypes';
 
 interface PokemonEvolutionChainItemProps {
   name: Pokemon['name'];

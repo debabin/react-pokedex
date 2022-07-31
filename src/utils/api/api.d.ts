@@ -1,5 +1,10 @@
 type RequestParams<Params> = Params;
 
+interface RequestMutationSettings<Func = {}> {
+  config?: import('axios').AxiosRequestConfig;
+  options?: import('react-query').UseMutationOptions<Awaited<ReturnType<Func>>, any, any, any>;
+}
+
 interface RequestQuerySettings<Func = {}> {
   config?: import('axios').AxiosRequestConfig;
   options?: import('react-query').UseQueryOptions<

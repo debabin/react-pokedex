@@ -17,5 +17,10 @@ code {
 }
 
 .title {
-  @apply font-semibold text-2xl;
+  @apply text-2xl font-semibold;
+}
+
+:root {
+  --image-cover: url('../img/cover.jpg');
+  --image-logo: url('../img/pokemon_logo.png');
 }

@@ -2,12 +2,12 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 
-import { useRequestPokemonInfiniteQuery, useRequestPokemonByIdQuery } from '@utils/api';
-import { getPokemonId } from '@utils/helpers';
+import { Button, PokemonStats, PokemonTypes } from '@common';
+import { useRequestPokemonByIdQuery,useRequestPokemonInfiniteQuery } from '@utils/api';
 import { ROUTES } from '@utils/constants';
+import { getPokemonId } from '@utils/helpers';
 
 import styles from './PokemonsPage.module.css';
-import { Button, PokemonStats, PokemonTypes } from '@common';
 
 interface PokemonInfoProps {
   id: Pokemon['id'];
