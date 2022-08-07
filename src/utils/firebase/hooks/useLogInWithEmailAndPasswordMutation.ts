@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { logInWithEmailAndPassword } from '../requests';
 
@@ -11,7 +11,7 @@ export const useLogInWithEmailAndPasswordMutation = (
   settings?: RequestMutationSettings<typeof logInWithEmailAndPassword>
 ) =>
   useMutation(
-    'logInWithEmailAndPassword',
+    ['logInWithEmailAndPassword'],
     (params: RequestParams<UseLogInWithEmailAndPasswordMutationParams>) =>
       logInWithEmailAndPassword(params.email, params.password),
     settings?.options && settings.options

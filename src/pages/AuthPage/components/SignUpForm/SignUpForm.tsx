@@ -84,7 +84,7 @@ export const SignUpForm: React.FC = () => {
         placeholder='password'
       />
 
-      <Button type='submit' variant='contained' isLoading={isLoading}>
+      <Button type='submit' variant='contained' loading={isLoading}>
         OK
       </Button>
     </form>

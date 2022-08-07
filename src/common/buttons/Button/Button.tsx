@@ -6,7 +6,7 @@ import styles from './Button.module.css';
 type ButtonVariant = 'contained' | 'outlined' | 'text';
 export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
   variant?: ButtonVariant;
-  isLoading?: boolean;
+  loading?: boolean;
   startIcon?: React.ReactNode;
 }
 
@@ -15,16 +15,16 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'contained',
   disabled,
   startIcon,
-  isLoading = false,
+  loading = false,
   ...props
 }) => {
   const classes = classnames(styles.button, styles[variant]);
 
   return (
-    <button className={classes} disabled={isLoading || disabled} {...props}>
+    <button className={classes} disabled={loading || disabled} {...props}>
       {!!startIcon && <span className={styles.startIcon}>{startIcon}</span>}
-      {!isLoading && children}
-      {isLoading && <div className={styles['dot-flashing']} />}
+      {!loading && children}
+      {loading && <div className={styles['dot-flashing']} />}
     </button>
   );
 };

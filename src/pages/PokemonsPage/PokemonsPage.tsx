@@ -1,11 +1,12 @@
 import React from 'react';
-import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, PokemonStats, PokemonTypes } from '@common';
-import { useRequestPokemonByIdQuery,useRequestPokemonInfiniteQuery } from '@utils/api';
-import { ROUTES } from '@utils/constants';
+import { useRequestPokemonByIdQuery, useRequestPokemonInfiniteQuery } from '@utils/api';
+import { useStore } from '@utils/contexts';
+import { useAddDocumentMutation, useUserPokemonsCollection } from '@utils/firebase';
 import { getPokemonId } from '@utils/helpers';
+import { useInView } from '@utils/hooks';
 
 import styles from './PokemonsPage.module.css';
 
@@ -15,6 +16,16 @@ interface PokemonInfoProps {
 }
 
 export const PokemonInfo: React.FC<PokemonInfoProps> = ({ id, onClose }) => {
+  const { session, user } = useStore();
+  const userPokemonsCollection = useUserPokemonsCollection({ uid: user.uid });
+  const addDocumentMutation = useAddDocumentMutation({
+    options: {
+      onSuccess: () => {
+        onClose();
+      }
+    }
+  });
+
   const navigate = useNavigate();
   const { data, isLoading } = useRequestPokemonByIdQuery({ id });
 
@@ -59,6 +70,21 @@ export const PokemonInfo: React.FC<PokemonInfoProps> = ({ id, onClose }) => {
           stats={pokemon.abilities.map(({ ability }) => ability.name)}
         />
 
+        {session.isLoginIn &&
+          userPokemonsCollection.documents &&
+          userPokemonsCollection.documents.length < 6 && (
+            <Button
+              loading={addDocumentMutation.isLoading}
+              onClick={() =>
+                addDocumentMutation.mutate({
+                  collection: 'pokemons',
+                  data: { id: pokemon.id, name: pokemon.name, uid: user.uid }
+                })
+              }
+            >
+              ADD TO TEAM
+            </Button>
+          )}
         <Button onClick={() => navigate(`/pokemon/${id}`)}>OPEN</Button>
       </div>
     </div>
@@ -67,14 +93,15 @@ export const PokemonInfo: React.FC<PokemonInfoProps> = ({ id, onClose }) => {
 
 export const PokemonsPage: React.FC = () => {
   const [pokemonId, setPokemonId] = React.useState<Pokemon['id'] | null>(null);
-  const { ref, inView } = useInView();
+  // const ref: any = React.useRef<HTMLDivElement>();
+  const { isInView, ref } = useInView();
   const { data, fetchNextPage, isLoading, hasNextPage } = useRequestPokemonInfiniteQuery();
 
   React.useEffect(() => {
-    if (inView && hasNextPage) {
+    if (isInView && hasNextPage) {
       fetchNextPage();
     }
-  }, [inView, data]);
+  }, [isInView, data]);
 
   if (isLoading || !data) return null;
 
@@ -110,8 +137,8 @@ export const PokemonsPage: React.FC = () => {
             </>
           );
         })}
-        <div ref={ref} />
       </div>
+      <div ref={ref} />
     </div>
   );
 };

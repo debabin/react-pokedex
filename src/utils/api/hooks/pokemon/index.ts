@@ -1,4 +1,4 @@
-import { useInfiniteQuery, UseInfiniteQueryOptions, useQueries } from 'react-query';
+import { useInfiniteQuery, UseInfiniteQueryOptions, useQueries } from '@tanstack/react-query';
 
 import { requestPokemonById, requestPokemons } from '../../requests';
 
@@ -7,22 +7,22 @@ interface UseRequestPokemonQueriesParams {
 }
 
 export const useRequestPokemonsQueries = ({ offset }: UseRequestPokemonQueriesParams) =>
-  useQueries(
-    Array.from({ length: offset }).map((_el, index) => {
+  useQueries({
+    queries: Array.from({ length: offset }).map((_el, index) => {
       const pokemonId = index + 1;
       return {
         queryKey: ['pokemon', pokemonId],
         queryFn: () => requestPokemonById({ params: { id: pokemonId } })
       };
     })
-  );
+  });
 
 const REQUEST_POKEMONS_LIMIT = 50;
 export const useRequestPokemonInfiniteQuery = (
   settings?: RequestInfinityQuerySettings<typeof requestPokemons>
 ) =>
   useInfiniteQuery(
-    'pokemon',
+    ['pokemon'],
     ({ pageParam = 0 }) =>
       requestPokemons({
         params: { limit: REQUEST_POKEMONS_LIMIT, offset: pageParam },

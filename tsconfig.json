@@ -26,7 +26,8 @@
       "@utils/firebase": ["./utils/firebase"],
       "@utils/constants": ["./utils/constants"],
       "@utils/helpers": ["./utils/helpers"],
-      "@utils/contexts": ["./utils/contexts"]
+      "@utils/contexts": ["./utils/contexts"],
+      "@utils/hooks": ["./utils/hooks"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

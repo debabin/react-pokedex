@@ -1,7 +1,7 @@
+import { User } from 'firebase/auth';
 import React from 'react';
 
-import { AUTH_COOKIE } from '@utils/constants';
-import { getCookie } from '@utils/helpers';
+import { useAuthState } from '@utils/firebase';
 
 import type { StoreContextProps } from './StoreContext';
 import { StoreContext } from './StoreContext';
@@ -11,12 +11,25 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
+  const { user } = useAuthState();
   const [store, setStore] = React.useState<StoreContextProps['store']>({
     session: {
-      isLoginIn: !!getCookie(AUTH_COOKIE)
+      isLoginIn: false
     },
-    user: {}
+    user: {} as User
   });
+
+  React.useEffect(() => {
+    if (user) {
+      setStore({
+        ...store,
+        session: {
+          isLoginIn: true
+        },
+        user
+      });
+    }
+  }, [user]);
 
   const value = React.useMemo(
     () => ({

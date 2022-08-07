@@ -12,11 +12,6 @@ interface PokemonEvolutionChainProps {
   pokemonName: Pokemon['name'];
 }
 
-interface FindChainResult {
-  prev: null | ChainLink;
-  current: ChainLink;
-  next: null | ChainLink[];
-}
 const generatePokemonChain = (pokemonName: string, chainLink: ChainLink): any => {
   if (chainLink.species.name === pokemonName)
     return { prev: null, current: chainLink, next: chainLink.evolves_to };

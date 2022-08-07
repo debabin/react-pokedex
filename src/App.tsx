@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate,Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from '@features/layout';
 import { AuthPage, PokedexPage, PokemonPage, PokemonsPage, ProfilePage } from '@pages';
@@ -29,6 +29,7 @@ export const App = () => {
             <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
             <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
             <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path='*' element={<Navigate to={ROUTES.POKEMONS} />} />
           </Route>
         </Routes>
       )}

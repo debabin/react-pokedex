@@ -59,7 +59,7 @@ export const SignInForm: React.FC = () => {
         error={errors.password?.message}
       />
 
-      <Button type='submit' variant='contained' isLoading={isLoading}>
+      <Button type='submit' variant='contained' loading={isLoading}>
         OK
       </Button>
     </form>
