@@ -1,9 +1,9 @@
 .header {
-  @apply w-full bg-white shadow-md;
+  @apply sticky top-0 z-[1000] mb-4 w-full bg-white px-7 py-4 shadow-md;
 }
 
 .header_container {
-  @apply container flex justify-between py-5;
+  @apply container flex justify-between;
 }
 
 .header_left {

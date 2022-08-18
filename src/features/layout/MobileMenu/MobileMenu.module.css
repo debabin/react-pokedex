@@ -1,0 +1,15 @@
+.mobile_header_container {
+  @apply w-full;
+}
+
+.mobile_header {
+  @apply flex w-full items-center justify-between;
+}
+
+.navmenu {
+  @apply fixed left-0 z-10 flex h-full w-full flex-col gap-4 bg-white px-7 py-5;
+}
+
+.navigation ul {
+  @apply flex flex-col gap-2;
+}

@@ -1,0 +1,46 @@
+.burger {
+  @apply w-14 space-y-2 p-2;
+  transition: 0.2s;
+}
+
+.burger div {
+  @apply h-[3px] rounded-lg bg-blue-500;
+  transition: 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.burger div:nth-of-type(1) {
+  @apply w-1/2;
+}
+
+.burger div:nth-of-type(2) {
+  @apply w-full;
+}
+
+.burger div:nth-of-type(3) {
+  @apply w-3/4;
+}
+
+.active {
+  @apply space-y-2 rounded bg-blue-500 bg-opacity-80 p-2 shadow;
+}
+
+.active div {
+  @apply bg-gray-100;
+}
+
+.active div:nth-of-type(1) {
+  transform-origin: bottom;
+  transform: rotatez(45deg) translateX(7px) translateY(0px);
+}
+
+.active div:nth-of-type(2) {
+  @apply w-5/6;
+  transform-origin: top;
+  transform: translateX(3px) translateY(-1px) rotatez(-45deg);
+}
+
+.active div:nth-of-type(3) {
+  @apply w-1/2;
+  transform-origin: bottom;
+  transform: translateX(14px) translateY(-7px) rotatez(45deg);
+}

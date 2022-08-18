@@ -1,9 +1,10 @@
-type $TSFixMe = any;
-
 type User = {
-  name: string;
-  email: string;
-  city: string;
+  city?: string;
+  displayName: import('firebase/auth').User['displayName'];
+  email: import('firebase/auth').User['email'];
+  phoneNumber: import('firebase/auth').User['phoneNumber'];
+  photoURL: import('firebase/auth').User['photoURL'];
+  uid: import('firebase/auth').User['uid'];
 };
 
 /**

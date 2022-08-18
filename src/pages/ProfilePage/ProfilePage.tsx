@@ -1,43 +1,44 @@
-import { collection, orderBy, query, where } from 'firebase/firestore';
-import React from 'react';
-
-import { Button } from '@common';
-import { PokemonEvolutionChainItem } from '@common/pokemon/PokemonEvolutionChain/PokemonEvolutionChainItem/PokemonEvolutionChainItem';
+import { Button, PokemonShortCard, UserCard } from '@common';
 import { INITIAL_STORE, useStore } from '@utils/contexts';
-import { useUserPokemonsCollection, useLogoutMutation } from '@utils/firebase';
+import { useUsersCollection, useLogoutMutation, useUserPokemonsCollection } from '@utils/firebase';
 
 import styles from './ProfilePage.module.css';
 
 export const ProfilePage = () => {
   const { user, setStore } = useStore();
+  const userDocument = useUsersCollection({ uid: user.uid });
   const logoutMutation = useLogoutMutation();
   const userPokemonsCollection = useUserPokemonsCollection({ uid: user.uid });
 
+  if (!userDocument.data) return null;
+
+  console.log('userDocument', userDocument.data[0]);
+
   return (
     <div className={styles.page}>
-      <div>name: {user.displayName}</div>
-      <div>uid: {user.uid}</div>
-      <div>email: {user.email}</div>
-      {user.photoURL && <img src={user.photoURL} alt='photoURL' />}
+      <UserCard user={userDocument.data[0]} />
+
+      <div>
+        {!!userPokemonsCollection.data && (
+          <>
+            <div className='title'>Team</div>
+            <div className={styles.team}>
+              {userPokemonsCollection.data.map((document) => (
+                <PokemonShortCard name={document.name} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
       <Button
         onClick={() => {
           logoutMutation.mutate({});
           setStore(INITIAL_STORE);
         }}
       >
-        Logout
+        LOGOUT
       </Button>
-
-      {!!userPokemonsCollection.documents && (
-        <>
-          <div>Team</div>
-          <div>
-            {userPokemonsCollection.documents.map((document) => (
-              <PokemonEvolutionChainItem name={document.name} />
-            ))}
-          </div>
-        </>
-      )}
     </div>
   );
 };

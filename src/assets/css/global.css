@@ -16,11 +16,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.title {
-  @apply text-2xl font-semibold;
-}
-
 :root {
   --image-cover: url('../img/cover.jpg');
   --image-logo: url('../img/pokemon_logo.png');
+}
+
+.page {
+  @apply container flex flex-col gap-4 p-4 pb-4;
 }

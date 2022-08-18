@@ -1,7 +1,14 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from '@features/layout';
-import { AuthPage, PokedexPage, PokemonPage, PokemonsPage, ProfilePage } from '@pages';
+import {
+  AuthPage,
+  PokedexPage,
+  PokemonPage,
+  PokemonsPage,
+  ProfilePage,
+  SettingsPage
+} from '@pages';
 import { ROUTES } from '@utils/constants';
 import { useStore } from '@utils/contexts';
 
@@ -29,6 +36,7 @@ export const App = () => {
             <Route path={ROUTES.POKEMON} element={<PokemonPage />} />
             <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
             <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />
             <Route path='*' element={<Navigate to={ROUTES.POKEMONS} />} />
           </Route>
         </Routes>

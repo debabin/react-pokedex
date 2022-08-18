@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,11 +12,12 @@ import {
 } from '@utils/constants';
 import { useStore } from '@utils/contexts';
 import { useRegisterWithEmailAndPasswordMutation } from '@utils/firebase';
-import { setCookie } from '@utils/helpers';
+import { getUserFieldsFromFireBase, setCookie } from '@utils/helpers';
 
 import styles from '../../AuthPage.module.css';
 
 interface SignUpFormValues extends User {
+  email: string;
   password: string;
 }
 
@@ -25,14 +25,11 @@ export const SignUpForm: React.FC = () => {
   const { setStore } = useStore();
   const navigate = useNavigate();
   const { register, handleSubmit, formState, setError } = useForm<SignUpFormValues>();
-  const {
-    mutate: registerWithEmailAndPasswordMutate,
-    isLoading: registerWithEmailAndPasswordIsLoding
-  } = useRegisterWithEmailAndPasswordMutation({
+  const registerWithEmailAndPasswordMutation = useRegisterWithEmailAndPasswordMutation({
     options: {
       onSuccess: ({ user }) => {
         setCookie(AUTH_COOKIE, user.uid);
-        setStore({ session: { isLoginIn: true }, user });
+        setStore({ session: { isLoginIn: true }, user: getUserFieldsFromFireBase(user) });
         navigate(ROUTES.POKEMONS);
       },
       onError: (error) => {
@@ -48,43 +45,43 @@ export const SignUpForm: React.FC = () => {
   });
 
   const { isSubmitting, errors } = formState;
-  const isLoading = isSubmitting || registerWithEmailAndPasswordIsLoding;
+  const loading = isSubmitting || registerWithEmailAndPasswordMutation.isLoading;
 
   return (
     <form
       className={styles.form}
       onSubmit={handleSubmit(({ password, ...user }) =>
-        registerWithEmailAndPasswordMutate({ user, password })
+        registerWithEmailAndPasswordMutation.mutate({ user, password })
       )}
     >
       <h1 className={styles.title}>Sign up</h1>
       <Input
-        {...register('name', nameSchema)}
-        disabled={isLoading}
-        error={errors.name?.message}
+        {...register('displayName', nameSchema)}
+        disabled={loading}
+        error={errors.displayName?.message}
         placeholder='name'
       />
       <Input
         {...register('email', emailSchema)}
-        disabled={isSubmitting}
+        disabled={loading}
         error={errors.email?.message}
         placeholder='email'
       />
       <Input
         {...register('city', citySchema)}
-        disabled={isLoading}
+        disabled={loading}
         error={errors.city?.message}
         placeholder='city'
       />
       <Input
         type='password'
         {...register('password', passwordSchema)}
-        disabled={isLoading}
+        disabled={loading}
         error={errors.password?.message}
         placeholder='password'
       />
 
-      <Button type='submit' variant='contained' loading={isLoading}>
+      <Button type='submit' variant='contained' loading={loading}>
         OK
       </Button>
     </form>

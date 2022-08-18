@@ -1,0 +1,23 @@
+.card {
+  @apply flex gap-5 rounded-lg bg-white p-5 shadow-lg;
+}
+
+.card .uid {
+  @apply flex-wrap text-lg font-bold;
+}
+
+.card img {
+  @apply w-20 rounded-lg;
+}
+
+.data {
+  @apply font-normal;
+}
+
+.body {
+  @apply flex gap-5;
+}
+
+.display_name {
+  @apply text-2xl font-light;
+}

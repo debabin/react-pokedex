@@ -1,0 +1,26 @@
+.card {
+  @apply flex w-full overflow-hidden rounded-lg bg-white shadow-lg;
+}
+
+.image_container {
+  @apply w-5/12;
+}
+
+.image_container img {
+  @apply h-full;
+
+  transform: scale(1.7);
+  transform-origin: 30% 20%;
+}
+
+.name {
+  @apply text-left text-lg font-semibold;
+}
+
+.info {
+  @apply flex flex-col gap-1 p-5;
+}
+
+.skeleton {
+  @apply animate-pulse;
+}

@@ -5,4 +5,7 @@ export * from './useLogInWithEmailAndPasswordMutation';
 export * from './useLogInWithGoogleMutation';
 export * from './useLogoutMutation';
 export * from './useRegisterWithEmailAndPasswordMutation';
+export * from './useUploadFile';
 export * from './useUserPokemonsCollection';
+export * from './useUsersCollection';
+export * from './useUpdateDocumentMutation';

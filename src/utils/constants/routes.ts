@@ -1,7 +1,8 @@
 export const ROUTES = {
-  AUTH: 'auth',
+  AUTH: '/auth',
   POKEMONS: '/',
   POKEMON: '/pokemon/:pokemonId',
   POKEDEX: '/pokedex',
-  PROFILE: '/profile'
+  PROFILE: '/profile',
+  SETTINGS: '/settings'
 };

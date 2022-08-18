@@ -1,0 +1,7 @@
+.user_image_container {
+  @apply flex items-center justify-center;
+}
+
+.user_image_container img {
+  @apply h-36 w-36 rounded-full object-contain;
+}

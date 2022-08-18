@@ -1,15 +1,18 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
+import { getUserFieldsFromFireBase } from '@utils/helpers';
+
 import { auth } from '../instance';
 
-export const registerWithEmailAndPassword = async (user: User, password: string) => {
+import { addDocument } from './addDocument';
+
+export const registerWithEmailAndPassword = async (
+  user: User & { email: string },
+  password: string
+) => {
   const response = await createUserWithEmailAndPassword(auth, user.email, password);
 
-  // await addDoc(collection(db, 'users'), {
-  //   uid: response.user.uid,
-  //   ...user,
-  //   authProvider: 'local'
-  // });
+  await addDocument('users', { user, uid: response.user.uid }, response.user.uid);
 
-  return response;
+  return { ...response, ...user };
 };

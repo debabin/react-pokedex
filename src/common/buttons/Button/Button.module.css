@@ -6,6 +6,14 @@
   @apply shadow-sm;
 }
 
+.button[disabled] {
+  @apply pointer-events-none opacity-60;
+}
+
+.loading {
+  @apply pointer-events-none;
+}
+
 .contained,
 .contained[type='button'],
 .contained[type='reset'],
@@ -18,7 +26,7 @@
 .outlined[type='button'],
 .outlined[type='reset'],
 .outlined[type='submit'] {
-  @apply border-2 border-blue-500 bg-inherit text-blue-500;
+  @apply border-[1px] border-blue-500 bg-inherit text-blue-500;
   @apply hover:border-blue-400 hover:text-blue-400;
   @apply active:border-blue-500 active:text-blue-500;
 }
@@ -34,4 +42,16 @@
 
 .startIcon {
   @apply mr-3 h-6 w-6;
+}
+
+.loading {
+  @apply h-6 w-6 animate-spin text-gray-200;
+}
+
+.outlined .loading {
+  @apply fill-blue-500;
+}
+
+.contained .loading {
+  @apply fill-yellow-600;
 }

@@ -1,0 +1,11 @@
+.title {
+  @apply text-3xl font-semibold;
+}
+
+.sub-title {
+  @apply text-2xl font-medium;
+}
+
+.title-regular {
+  @apply text-lg font-normal;
+}

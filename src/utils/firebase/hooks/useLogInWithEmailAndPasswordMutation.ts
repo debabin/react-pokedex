@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { logInWithEmailAndPassword } from '../requests';
 
 interface UseLogInWithEmailAndPasswordMutationParams {
-  email: User['email'];
+  email: string;
   password: string;
 }
 

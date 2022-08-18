@@ -1,5 +1,5 @@
 .page {
-  @apply flex flex-col  justify-center;
+  @apply flex flex-col justify-center;
 
   @apply md:flex md:h-screen md:items-center md:justify-center;
 }
@@ -12,7 +12,7 @@
 
 @screen md {
   .card {
-    @apply flex h-1/2 w-2/3 flex-row rounded-lg bg-gray-50 shadow-xl;
+    @apply flex h-2/3 w-2/3 flex-row rounded-lg bg-gray-50 shadow-xl;
   }
 }
 
