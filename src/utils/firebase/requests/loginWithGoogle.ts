@@ -1,5 +1,6 @@
-import { getUserFieldsFromFireBase } from '@utils/helpers';
 import { signInWithPopup } from 'firebase/auth';
+
+import { getUserFieldsFromFireBase } from '@utils/helpers';
 
 import { auth, googleProvider } from '../instance';
 

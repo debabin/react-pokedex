@@ -1,0 +1,44 @@
+.button {
+  @apply flex items-center justify-center;
+  @apply rounded-2xl bg-inherit p-1 shadow-md;
+
+  @apply shadow-sm;
+}
+
+.button[disabled] {
+  @apply pointer-events-none opacity-60;
+}
+
+.button_loading {
+  @apply pointer-events-none;
+}
+
+.contained,
+.contained[type='button'],
+.contained[type='reset'],
+.contained[type='submit'] {
+  @apply bg-blue-500 fill-white;
+  @apply hover:bg-blue-400;
+}
+
+.outlined,
+.outlined[type='button'],
+.outlined[type='reset'],
+.outlined[type='submit'] {
+  @apply border-[1px] border-blue-500 bg-inherit fill-blue-500;
+  @apply hover:border-blue-400 hover:fill-blue-400;
+  @apply active:border-blue-500 active:fill-blue-500;
+}
+
+.icon,
+.icon[type='button'],
+.icon[type='reset'],
+.icon[type='submit'] {
+  @apply bg-inherit fill-neutral-500 shadow-none;
+  @apply hover:fill-neutral-400;
+  @apply active:fill-neutral-500;
+}
+
+.button svg {
+  @apply h-11 w-11;
+}

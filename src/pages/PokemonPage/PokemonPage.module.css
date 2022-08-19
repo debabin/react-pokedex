@@ -3,12 +3,12 @@
 }
 
 .name_container {
-  @apply flex gap-2 justify-start items-end;
-  @apply font-bold text-2xl text-black capitalize;
+  @apply flex items-end justify-start gap-2;
+  @apply text-2xl font-bold capitalize text-black;
 }
 
 .number {
-  @apply font-light text-base;
+  @apply text-base font-light;
 }
 
 .content {
@@ -16,7 +16,7 @@
 }
 
 .image_container img {
-  @apply w-full h-full;
+  @apply h-full w-full;
 }
 
 .button_container {

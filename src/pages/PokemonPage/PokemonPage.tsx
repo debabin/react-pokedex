@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Button, PokemonEvolutionChain,PokemonStats } from '@common';
-import { useRequestPokemonByIdQuery,useRequestPokemonSpeciesQuery } from '@utils/api';
+import { Button, PokemonEvolutionChain, PokemonStats } from '@common';
+import { useRequestPokemonByIdQuery, useRequestPokemonSpeciesQuery } from '@utils/api';
 import { getPokemonId } from '@utils/helpers';
 
 import styles from './PokemonPage.module.css';

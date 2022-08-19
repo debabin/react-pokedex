@@ -1,4 +1,4 @@
-import { doc, DocumentData, WithFieldValue, updateDoc } from 'firebase/firestore';
+import { doc, DocumentData, updateDoc, WithFieldValue } from 'firebase/firestore';
 
 import { Collection, database } from '../instance';
 

@@ -7,34 +7,31 @@ import { useUpdateDocumentMutation, useUploadFile } from '@utils/firebase';
 import type { ModalProps } from '../Modal/Modal';
 import { Modal } from '../Modal/Modal';
 
-interface UploadPhotoModalProps extends Omit<ModalProps, 'children'> {}
+interface UploadPhotoModalProps extends Omit<ModalProps, 'children' | 'loading'> {}
 
 export const UploadPhotoModal: React.FC<UploadPhotoModalProps> = ({ onClose, ...props }) => {
+  const [loading, setLoading] = React.useState(false);
   const { user } = useStore();
   const photoName = `photo_${user.uid}`;
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
-  const { uploadFile, isUploading, progresspercent } = useUploadFile(photoName);
-  const updateDocumentMutation = useUpdateDocumentMutation({
-    options: {
-      onSuccess: () => {
-        onClose();
-      }
-    }
-  });
+  const { uploadFile, progresspercent } = useUploadFile(photoName);
+  const updateDocumentMutation = useUpdateDocumentMutation();
 
   const onFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
+    setLoading(true);
     const result = await uploadFile(event.target.files[0]);
 
-    updateDocumentMutation.mutate({
+    await updateDocumentMutation.mutateAsync({
       collection: 'users',
       data: { photoURL: result?.url },
       id: user.uid
     });
-  };
 
-  const photoIsUploading = updateDocumentMutation.isLoading || isUploading;
+    onClose();
+    setLoading(false);
+  };
 
   return (
     <Modal {...props} onClose={onClose}>
@@ -46,18 +43,11 @@ export const UploadPhotoModal: React.FC<UploadPhotoModalProps> = ({ onClose, ...
           ref={fileInputRef}
           onChange={onFileInputChange}
         />
-        <Button variant='text' onClick={() => fileInputRef.current?.click()}>
-          {!photoIsUploading ? 'Upload your photo' : `${progresspercent}%`}
+        <Button variant='text' onClick={() => !loading && fileInputRef.current?.click()}>
+          {!loading ? 'Upload your photo' : `${progresspercent}%`}
         </Button>
       </label>
-
-      <Button
-        onClick={(event) => {
-          event.stopPropagation();
-          onClose();
-        }}
-        loading={photoIsUploading}
-      >
+      <Button onClick={onClose} loading={loading}>
         CANCEL
       </Button>
     </Modal>

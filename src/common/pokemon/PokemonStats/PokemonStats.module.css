@@ -1,7 +1,7 @@
 .title {
-  @apply font-bold text-2xl text-black;
+  @apply text-2xl font-bold text-black;
 }
 
 .stats li {
-  @apply border-b-2 pb-1 mt-1;
+  @apply mt-1 border-b-2 pb-1;
 }

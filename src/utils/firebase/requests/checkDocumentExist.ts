@@ -1,4 +1,4 @@
-import { getDoc, doc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 import { Collection, database } from '../instance';
 

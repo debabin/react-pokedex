@@ -1,18 +1,19 @@
 import {
+  getDownloadURL,
   ref,
   uploadBytesResumable,
   UploadMetadata,
   UploadResult,
-  UploadTaskSnapshot,
-  getDownloadURL
+  UploadTaskSnapshot
 } from 'firebase/storage';
 import React from 'react';
+
 import { usePromise } from '@utils/hooks';
 
 import { storage } from '../instance';
 
-export const useUploadFile = (name: string) => {
-  const storageRef = ref(storage, name);
+export const useUploadFile = (fileName: string) => {
+  const storageRef = ref(storage, fileName);
   const { isLoading, setIsLoading, isError, setError, error } = usePromise<UploadResult>();
 
   const [snapshot, setSnapshot] = React.useState<UploadTaskSnapshot>();

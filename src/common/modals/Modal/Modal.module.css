@@ -4,7 +4,7 @@
 
 .modal_container {
   transition: bottom 0.3s;
-  @apply fixed bottom-[-100%] left-0 right-0 z-[1050] m-auto w-[99%] overflow-hidden overflow-y-auto rounded-t-2xl bg-white py-4 px-3 outline-none;
+  @apply fixed bottom-[-100%] left-0 right-0 z-[1050] m-auto w-[99%] overflow-hidden overflow-y-auto rounded-t-2xl bg-white py-6 px-5 outline-none;
 }
 
 .modal_open .modal_container {

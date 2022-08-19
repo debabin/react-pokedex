@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Typography } from '@common';
 import logo from '@assets/img/pokemon_logo.png';
+import { Typography } from '@common';
 import { ROUTES } from '@utils/constants';
 
 import { MobileMenu } from '../MobileMenu/MobileMenu';
+
 import { Burger } from './components/Burger/Burger';
 
 import styles from './Header.module.css';

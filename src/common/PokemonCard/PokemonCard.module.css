@@ -1,13 +1,13 @@
 .card {
-  @apply flex flex-col p-10 shadow-xl rounded-xl;
+  @apply flex flex-col rounded-xl p-10 shadow-xl;
 }
 
 .card_title {
-  @apply flex justify-between items-center;
+  @apply flex items-center justify-between;
 }
 
 .card_title_name {
-  @apply text-2xl capitalize font-bold;
+  @apply text-2xl font-bold capitalize;
 }
 
 .card_title_id {
@@ -15,7 +15,7 @@
 }
 
 .card img {
-  @apply w-80 h-80;
+  @apply h-80 w-80;
 }
 
 .card_info {
@@ -23,17 +23,17 @@
 }
 
 .card_info_title {
-  @apply font-bold text-2xl text-black;
+  @apply text-2xl font-bold text-black;
 }
 
 .card_info_item {
-  @apply border-b-2 pb-1 mt-1;
+  @apply mt-1 border-b-2 pb-1;
 }
 
 .card_types {
-  @apply flex gap-2 mt-1;
+  @apply mt-1 flex gap-2;
 }
 
 .card_type {
-  @apply bg-gray-500 py-1 px-3 rounded-full text-white;
+  @apply rounded-full bg-gray-500 py-1 px-3 text-white;
 }

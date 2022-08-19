@@ -1,6 +1,6 @@
 .button {
   @apply flex items-center justify-center;
-  @apply h-12 w-full cursor-pointer rounded-lg bg-inherit shadow-md;
+  @apply h-12 w-full rounded-lg bg-inherit shadow-md;
   @apply text-lg font-medium;
 
   @apply shadow-sm;
@@ -10,7 +10,7 @@
   @apply pointer-events-none opacity-60;
 }
 
-.loading {
+.button_loading {
   @apply pointer-events-none;
 }
 

@@ -1,5 +1,5 @@
 .evolution {
-  @apply flex w-full rounded-lg shadow-lg border-2 overflow-hidden;
+  @apply flex w-full overflow-hidden rounded-lg border-2 shadow-lg;
 }
 
 .image_container {
@@ -14,7 +14,7 @@
 }
 
 .name {
-  @apply font-semibold text-lg text-left;
+  @apply text-left text-lg font-semibold;
 }
 
 .info {

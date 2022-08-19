@@ -1,35 +1,22 @@
 import React from 'react';
 
-import { Button, UploadPhotoModal, Typography } from '@common';
+import { IconButton, SettingChangeModal, UploadPhotoModal } from '@common';
+import { PenIcon } from '@common/icons';
+import type { SettingModalItem } from '@common/modals';
 import { useStore } from '@utils/contexts';
-import { useUpdateDocumentMutation, useUploadFile, useUsersCollection } from '@utils/firebase';
+import { useUsersCollection } from '@utils/firebase';
+
+import { Setting } from './Setting/Setting';
 
 import styles from './SettingsPage.module.css';
 
 export const SettingsPage = () => {
   const [isShowUploadPhotoModal, setIsShowUploadPhotoModal] = React.useState(false);
+  const [selectedSetting, setSelectedSetting] = React.useState<SettingModalItem | null>(null);
 
   const { user } = useStore();
-  const photoUrlId = `photoUrl_${user.uid}`;
-  const { uploadFile, progresspercent } = useUploadFile(photoUrlId);
-  const updateDocumentMutation = useUpdateDocumentMutation();
 
   const userDocument = useUsersCollection({ uid: user.uid });
-
-  const [image, setImage] = React.useState<{ preview: string; raw: File } | null>(null);
-  const handleChange = async (e: any) => {
-    setImage({
-      preview: URL.createObjectURL(e.target.files[0]),
-      raw: e.target.files[0]
-    });
-    const result = await uploadFile(e.target.files[0]);
-
-    updateDocumentMutation.mutate({
-      collection: 'users',
-      data: { photoURL: result?.url },
-      id: user.uid
-    });
-  };
 
   if (userDocument.isLoading || !userDocument.data) return null;
   const profile = userDocument.data[0];
@@ -38,23 +25,52 @@ export const SettingsPage = () => {
 
   return (
     <div className='page'>
-      <div className={styles.user_image_container}>
-        <img
-          aria-hidden
-          src={photoURL}
-          onClick={() => setIsShowUploadPhotoModal(!isShowUploadPhotoModal)}
-          alt='photoURL'
-        />
+      <div className={styles.image_container}>
+        <img aria-hidden src={photoURL} alt='photoURL' />
+        <div>
+          <IconButton
+            icon={<PenIcon />}
+            onClick={() => setIsShowUploadPhotoModal(!isShowUploadPhotoModal)}
+          />
+        </div>
       </div>
 
-      <Typography tag='h1' variant='title'>
-        {profile.displayName}
-      </Typography>
+      <ul className={styles.settings}>
+        <li>
+          <Setting label='User id' value={profile.uid} />
+        </li>
+        {profile.email && (
+          <li>
+            <Setting label='Email' value={profile.email} />
+          </li>
+        )}
+        {profile.displayName && (
+          <li>
+            <Setting
+              label='Your name'
+              value={profile.displayName}
+              onClick={() =>
+                setSelectedSetting({ type: 'displayName', value: profile.displayName })
+              }
+            />
+          </li>
+        )}
+
+        <li>
+          <Setting
+            label='City'
+            value={profile.city ?? 'no data'}
+            onClick={() => setSelectedSetting({ type: 'city', value: profile.city ?? '' })}
+          />
+        </li>
+      </ul>
 
       <UploadPhotoModal
         isShowing={isShowUploadPhotoModal}
         onClose={() => setIsShowUploadPhotoModal(false)}
       />
+
+      <SettingChangeModal setting={selectedSetting} onClose={() => setSelectedSetting(null)} />
     </div>
   );
 };

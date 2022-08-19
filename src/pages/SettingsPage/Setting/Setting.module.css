@@ -1,0 +1,3 @@
+.setting {
+  @apply flex justify-between;
+}

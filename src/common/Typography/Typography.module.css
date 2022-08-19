@@ -1,11 +1,23 @@
 .title {
-  @apply text-3xl font-semibold;
+  @apply text-2xl font-semibold capitalize;
 }
 
 .sub-title {
-  @apply text-2xl font-medium;
+  @apply text-xl font-medium capitalize;
 }
 
 .title-regular {
   @apply text-lg font-normal;
+}
+
+.body {
+  @apply text-base font-medium;
+}
+
+.title-body {
+  @apply text-base font-semibold;
+}
+
+.sub-body {
+  @apply text-sm font-normal;
 }

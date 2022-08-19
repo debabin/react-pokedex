@@ -1,4 +1,4 @@
-import { maxLength, minLength,patterEmail, required } from './rules';
+import { maxLength, minLength, patterEmail, required } from './rules';
 
 export const emailSchema = {
   required,

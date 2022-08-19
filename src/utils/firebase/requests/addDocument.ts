@@ -1,11 +1,11 @@
 import {
-  setDoc,
-  doc,
-  collection as col,
-  DocumentData,
-  WithFieldValue,
   addDoc,
-  getDoc
+  collection as col,
+  doc,
+  DocumentData,
+  getDoc,
+  setDoc,
+  WithFieldValue
 } from 'firebase/firestore';
 
 import { Collection, database } from '../instance';

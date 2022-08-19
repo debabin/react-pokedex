@@ -1,7 +1,18 @@
-.user_image_container {
-  @apply flex items-center justify-center;
+.image_container {
+  @apply relative flex items-center justify-center;
 }
 
-.user_image_container img {
-  @apply h-36 w-36 rounded-full object-contain;
+.image_container img {
+  @apply h-36 w-36 rounded-xl object-contain;
+}
+
+.image_container div {
+  @apply absolute bottom-0 m-auto;
+}
+
+.settings {
+  @apply mt-2 flex flex-col gap-5 rounded-xl bg-white p-4 shadow-md;
+}
+
+.settings li {
 }

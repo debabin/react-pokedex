@@ -1,5 +1,5 @@
 .input {
-  @apply w-full rounded-md bg-inherit bg-white p-3 shadow-sm;
+  @apply w-full rounded-md bg-inherit bg-neutral-100 p-3 shadow-sm;
   @apply focus:outline-none focus:ring-2;
 }
 

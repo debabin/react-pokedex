@@ -1,5 +1,5 @@
 .card {
-  @apply flex gap-5 rounded-lg bg-white p-5 shadow-lg;
+  @apply flex gap-5 rounded-lg bg-white p-5  shadow-md;
 }
 
 .card .uid {

@@ -1,6 +1,6 @@
 import { Button, PokemonShortCard, UserCard } from '@common';
 import { INITIAL_STORE, useStore } from '@utils/contexts';
-import { useUsersCollection, useLogoutMutation, useUserPokemonsCollection } from '@utils/firebase';
+import { useLogoutMutation, useUserPokemonsCollection, useUsersCollection } from '@utils/firebase';
 
 import styles from './ProfilePage.module.css';
 
