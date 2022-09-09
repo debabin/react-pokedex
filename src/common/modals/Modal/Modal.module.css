@@ -2,11 +2,32 @@
   @apply fixed top-0 left-0 z-[1040] h-screen w-screen bg-black opacity-20;
 }
 
+:global(.dark) .modal_overlay {
+  @apply opacity-60;
+}
+
 .modal_container {
   transition: bottom 0.3s;
   @apply fixed bottom-[-100%] left-0 right-0 z-[1050] m-auto w-[99%] overflow-hidden overflow-y-auto rounded-t-2xl bg-white py-6 px-5 outline-none;
 }
 
+@screen md {
+  .modal_container {
+    transition: none;
+    @apply w-96 rounded-2xl px-9;
+  }
+}
+
+:global(.dark) .modal_container {
+  @apply bg-slate-700;
+}
+
 .modal_open .modal_container {
   @apply bottom-[0];
+}
+
+@screen md {
+  .modal_open .modal_container {
+    @apply bottom-1/2;
+  }
 }

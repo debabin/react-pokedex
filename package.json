@@ -1,7 +1,8 @@
 {
-  "name": "my-vue-app",
+  "name": "📕 POKEDEX",
+  "version": "1.0.0",
+  "author": "Dmitriy Babin (https://github.com/debabin)",
   "private": true,
-  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -18,10 +19,10 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.33.1",
-    "react-router-dom": "^6.3.0",
-    "vite-plugin-svgr": "^2.2.1"
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "vite-plugin-svgr": "^2.2.1",
     "@tanstack/react-query-devtools": "^4.0.10",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",

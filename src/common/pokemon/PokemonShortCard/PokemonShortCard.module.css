@@ -1,0 +1,36 @@
+.card {
+  @apply flex w-full overflow-hidden rounded-lg bg-white shadow-md;
+}
+
+:global(.dark) .card {
+  @apply bg-slate-600 shadow-none;
+}
+
+.image_container {
+  @apply w-5/12;
+}
+
+@screen md {
+  .image_container {
+    @apply w-1/2;
+  }
+}
+
+.image_container img {
+  @apply h-full;
+
+  transform: scale(1.7);
+  transform-origin: 30% 20%;
+}
+
+.name {
+  @apply text-left text-lg font-semibold;
+}
+
+.info {
+  @apply flex w-full flex-col gap-1 p-5;
+}
+
+.skeleton {
+  @apply animate-pulse;
+}

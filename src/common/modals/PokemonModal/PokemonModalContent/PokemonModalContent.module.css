@@ -1,0 +1,15 @@
+.pokemon_modal {
+  @apply mb-2 flex flex-col gap-4;
+}
+
+.pokemon_image {
+  @apply flex justify-center;
+}
+
+.pokemon_image img {
+  @apply w-2/3;
+}
+
+.button_container {
+  @apply flex gap-2;
+}

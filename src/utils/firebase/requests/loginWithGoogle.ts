@@ -12,7 +12,11 @@ export const loginWithGoogle = async () => {
   const userExist = await checkDocumentExist('users', response.user.uid);
 
   if (!userExist) {
-    await addDocument('users', getUserFieldsFromFireBase(response.user), response.user.uid);
+    await addDocument(
+      'users',
+      { ...getUserFieldsFromFireBase(response.user), pokemons: [] },
+      response.user.uid
+    );
   }
 
   return response;

@@ -3,7 +3,7 @@
 }
 
 .image_container img {
-  @apply h-36 w-36 rounded-xl object-contain;
+  @apply h-56 w-56 rounded-xl object-contain;
 }
 
 .image_container div {
@@ -11,8 +11,15 @@
 }
 
 .settings {
-  @apply mt-2 flex flex-col gap-5 rounded-xl bg-white p-4 shadow-md;
+  @apply mt-2 flex flex-col gap-5;
 }
 
-.settings li {
+@screen md {
+  .image_container img {
+    @apply h-72 w-72 rounded-xl object-contain;
+  }
+
+  .settings_container {
+    @apply flex items-center justify-center gap-5;
+  }
 }

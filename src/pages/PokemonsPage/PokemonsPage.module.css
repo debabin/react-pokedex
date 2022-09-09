@@ -1,19 +1,10 @@
-.page {
-  @apply container px-4;
-}
-
 .pokemons_container {
   @apply grid grid-cols-1 gap-5;
-
   @apply md:grid-cols-3 md:gap-10;
 }
 
-.pokemon_container {
-  @apply relative flex flex-col;
-}
-
 .pokemon {
-  @apply flex items-center justify-between gap-1 rounded-xl bg-white px-8 py-5 shadow-md;
+  @apply flex items-center justify-between gap-1;
 }
 
 .pokemon_number {
@@ -21,49 +12,5 @@
 }
 
 .pokemon_name {
-  @apply text-2xl font-bold capitalize text-black;
-}
-
-.pokemon_info {
-  @apply fixed top-0 right-0 z-10 h-full w-full overflow-x-hidden overflow-y-scroll bg-white;
-
-  @apply md:left-0 md:right-0 md:mx-auto md:my-0 md:w-4/12 md:overflow-y-hidden;
-
-  /* @apply absolute top-16 z-10 bg-white w-full rounded-lg shadow-xl cursor-pointer; */
-}
-
-.pokemon_info_container {
-  @apply flex flex-col gap-4 p-10;
-}
-
-.pokemon_info_image img {
-  @apply h-full w-full;
-}
-
-.pokemon_info_types {
-  @apply mt-1 mb-3 flex gap-2;
-}
-
-.pokemon_info_type {
-  @apply rounded-full bg-gray-500 py-1 px-3 text-white;
-}
-
-.info {
-  @apply flex flex-col justify-between gap-1;
-}
-
-.info_title {
-  @apply text-2xl font-bold text-black;
-}
-
-.info_item {
-  @apply mt-1 border-b-2 pb-1;
-}
-
-.pokemon_info_title {
-  @apply flex justify-between;
-}
-
-.close {
-  @apply mb-3 text-right text-3xl text-teal-500;
+  @apply text-2xl font-bold capitalize;
 }

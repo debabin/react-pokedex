@@ -1,0 +1,28 @@
+.desktop_header_container {
+  @apply hidden w-full;
+  @apply md:block;
+}
+
+.desktop_header {
+  @apply flex w-full items-center justify-between;
+}
+
+.menu_container {
+  @apply flex items-center justify-center gap-4;
+}
+
+.menu_container nav ul {
+  @apply flex gap-4;
+}
+
+.menu_container img {
+  @apply w-14 rounded-lg;
+}
+
+.navmenu {
+  @apply fixed left-0 z-10 flex h-full w-full flex-col gap-4 bg-white px-7 py-5;
+}
+
+:global(.dark) .navmenu {
+  @apply bg-slate-600;
+}

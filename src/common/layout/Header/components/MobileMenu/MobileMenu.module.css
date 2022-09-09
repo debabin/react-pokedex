@@ -1,0 +1,24 @@
+.mobile_header_container {
+  @apply w-full;
+  @apply md:hidden;
+}
+
+.mobile_header {
+  @apply flex w-full items-center justify-between;
+}
+
+.menu_container {
+  @apply flex items-center justify-center gap-4;
+}
+
+.menu_container nav ul {
+  @apply flex flex-col gap-2;
+}
+
+.navmenu {
+  @apply fixed left-0 z-10 flex h-full w-full flex-col gap-4 bg-white px-7 py-5;
+}
+
+:global(.dark) .navmenu {
+  @apply bg-slate-600;
+}

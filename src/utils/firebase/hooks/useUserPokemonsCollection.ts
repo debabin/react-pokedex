@@ -1,9 +1,8 @@
 import { User } from 'firebase/auth';
-import { collection, orderBy, query, where } from 'firebase/firestore';
+import { collection, orderBy, Query, query, where } from 'firebase/firestore';
 
 import { database } from '../instance';
 
-import { PokemonDocument } from './useAddDocumentMutation';
 import { useCollection } from './useCollection';
 
 interface UseUserPokemonsCollectionParams {
@@ -11,10 +10,11 @@ interface UseUserPokemonsCollectionParams {
 }
 
 export const useUserPokemonsCollection = ({ uid }: UseUserPokemonsCollectionParams) => {
-  const q = query<$TSFixMe>(
+  const q = query(
     collection(database, 'pokemons'),
     orderBy('name'),
     where('uid', '==', uid)
-  );
+  ) as Query<PokemonDocument>;
+
   return useCollection<PokemonDocument>(q);
 };

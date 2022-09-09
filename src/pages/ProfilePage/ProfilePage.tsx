@@ -1,36 +1,30 @@
-import { Button, PokemonShortCard, UserCard } from '@common';
+import classnames from 'classnames';
+
+import { Button, PokemonShortCard, Spinner, Typography, UserCard } from '@common';
 import { INITIAL_STORE, useStore } from '@utils/contexts';
-import { useLogoutMutation, useUserPokemonsCollection, useUsersCollection } from '@utils/firebase';
+import { useAuthState, useLogoutMutation } from '@utils/firebase';
 
 import styles from './ProfilePage.module.css';
 
 export const ProfilePage = () => {
-  const { user, setStore } = useStore();
-  const userDocument = useUsersCollection({ uid: user.uid });
+  const { setStore } = useStore();
+  const authState = useAuthState();
   const logoutMutation = useLogoutMutation();
-  const userPokemonsCollection = useUserPokemonsCollection({ uid: user.uid });
 
-  if (!userDocument.data) return null;
-
-  console.log('userDocument', userDocument.data[0]);
+  if (!authState.data) return <Spinner />;
+  const user = authState.data;
 
   return (
-    <div className={styles.page}>
-      <UserCard user={userDocument.data[0]} />
-
+    <div className={classnames('page', styles.profile_container)}>
+      <UserCard user={user} />
       <div>
-        {!!userPokemonsCollection.data && (
-          <>
-            <div className='title'>Team</div>
-            <div className={styles.team}>
-              {userPokemonsCollection.data.map((document) => (
-                <PokemonShortCard name={document.name} />
-              ))}
-            </div>
-          </>
-        )}
+        <Typography variant='title'>Team</Typography>
+        <div className={styles.team}>
+          {user.pokemons.map((pokemon) => (
+            <PokemonShortCard key={pokemon.id} name={pokemon.name} />
+          ))}
+        </div>
       </div>
-
       <Button
         onClick={() => {
           logoutMutation.mutate({});

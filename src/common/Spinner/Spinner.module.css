@@ -1,0 +1,11 @@
+.spinner {
+  @apply flex h-12 w-12 animate-spin fill-blue-600 text-gray-200;
+}
+
+:global(.dark) .spinner {
+  @apply text-gray-600;
+}
+
+.spinner_container {
+  @apply flex h-full items-center justify-center p-2;
+}

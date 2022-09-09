@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
-import { Button, PokemonStats } from '@common';
+import { Typography } from '@common';
 import { useRequestEvolutionChainQuery } from '@utils/api';
+import { generatePokemonChain } from '@utils/helpers';
 
-import { PokemonEvolutionChainItem } from './PokemonEvolutionChainItem/PokemonEvolutionChainItem';
+import { PokemonShortCard } from '../PokemonShortCard/PokemonShortCard';
 
 import styles from './PokemonEvolutionChain.module.css';
 
@@ -11,24 +12,6 @@ interface PokemonEvolutionChainProps {
   chainId: number;
   pokemonName: Pokemon['name'];
 }
-
-const generatePokemonChain = (pokemonName: string, chainLink: ChainLink): any => {
-  if (chainLink.species.name === pokemonName)
-    return { prev: null, current: chainLink, next: chainLink.evolves_to };
-
-  let chain;
-  for (let i = 0; i < chainLink.evolves_to.length; i += 1) {
-    const evolve = chainLink.evolves_to[i];
-    if (evolve.species.name === pokemonName) {
-      chain = { prev: chainLink, current: evolve, next: evolve.evolves_to };
-      break;
-    }
-
-    chain = generatePokemonChain(pokemonName, evolve);
-  }
-
-  return chain;
-};
 
 export const PokemonEvolutionChain: React.FC<PokemonEvolutionChainProps> = ({
   chainId,
@@ -49,21 +32,18 @@ export const PokemonEvolutionChain: React.FC<PokemonEvolutionChainProps> = ({
     <div className={styles.container}>
       {!!pokemonChain.prev && (
         <>
-          <div className='title'>Previos evolution</div>
+          <Typography variant='title'>Previos evolution</Typography>
           <div className={styles.evolutions_container}>
-            <PokemonEvolutionChainItem name={pokemonChain.prev.species.name} />{' '}
+            <PokemonShortCard name={pokemonChain.prev.species.name} />{' '}
           </div>
         </>
       )}
       {!!pokemonChain.next.length && (
         <>
-          <div className='title'>Next evolution(s)</div>
+          <Typography variant='title'>Next evolution(s)</Typography>
           <div className={styles.evolutions_container}>
             {pokemonChain.next.map((evolution: any) => (
-              <PokemonEvolutionChainItem
-                key={evolution.species.name}
-                name={evolution.species.name}
-              />
+              <PokemonShortCard key={evolution.species.name} name={evolution.species.name} />
             ))}
           </div>
         </>

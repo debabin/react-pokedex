@@ -3,6 +3,10 @@
   @apply focus:outline-none focus:ring-2;
 }
 
+:global(.dark) .input {
+  @apply bg-slate-500 shadow-none;
+}
+
 .input_error {
   @apply bg-red-100 ring-1 ring-red-400;
 }

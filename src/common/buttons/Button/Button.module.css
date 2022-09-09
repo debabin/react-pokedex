@@ -40,6 +40,12 @@
   @apply active:text-neutral-500;
 }
 
+:global(.dark) .text {
+  @apply bg-inherit text-slate-300 shadow-none;
+  @apply hover:text-slate-200;
+  @apply active:text-slate-200;
+}
+
 .startIcon {
   @apply mr-3 h-6 w-6;
 }

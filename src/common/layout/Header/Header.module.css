@@ -1,0 +1,32 @@
+.header {
+  @apply sticky top-0 z-[1000] mb-4 w-full bg-white px-7 py-4 shadow-md;
+}
+
+:global(.dark) .header {
+  @apply bg-slate-600 shadow-none;
+}
+
+.header_container {
+  @apply container flex justify-between px-4;
+}
+
+.header_left {
+  @apply flex items-center justify-center gap-6;
+}
+
+.header_logo {
+  @apply w-[150px];
+}
+
+.header_quote {
+  @apply text-base font-light;
+}
+
+.header_navigation {
+  @apply flex items-center justify-center gap-5;
+}
+
+.header_navigation a {
+  @apply cursor-pointer text-lg font-normal;
+  @apply hover:underline;
+}

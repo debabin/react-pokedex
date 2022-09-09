@@ -3,7 +3,6 @@ import {
   collection as col,
   doc,
   DocumentData,
-  getDoc,
   setDoc,
   WithFieldValue
 } from 'firebase/firestore';

@@ -1,0 +1,15 @@
+.users {
+  @apply grid grid-cols-1 gap-3;
+}
+
+@screen md {
+  .users {
+    @apply grid-cols-2;
+  }
+}
+
+@screen xl {
+  .users {
+    @apply grid-cols-3;
+  }
+}

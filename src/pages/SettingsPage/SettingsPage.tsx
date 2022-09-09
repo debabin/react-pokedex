@@ -1,10 +1,10 @@
+import classnames from 'classnames';
 import React from 'react';
 
-import { IconButton, SettingChangeModal, UploadPhotoModal } from '@common';
+import { IconButton, SettingChangeModal, Spinner, UploadPhotoModal } from '@common';
 import { PenIcon } from '@common/icons';
 import type { SettingModalItem } from '@common/modals';
-import { useStore } from '@utils/contexts';
-import { useUsersCollection } from '@utils/firebase';
+import { useAuthState } from '@utils/firebase';
 
 import { Setting } from './Setting/Setting';
 
@@ -14,17 +14,15 @@ export const SettingsPage = () => {
   const [isShowUploadPhotoModal, setIsShowUploadPhotoModal] = React.useState(false);
   const [selectedSetting, setSelectedSetting] = React.useState<SettingModalItem | null>(null);
 
-  const { user } = useStore();
+  const authState = useAuthState();
 
-  const userDocument = useUsersCollection({ uid: user.uid });
+  if (!authState.data) return <Spinner />;
+  const user = authState.data;
 
-  if (userDocument.isLoading || !userDocument.data) return null;
-  const profile = userDocument.data[0];
-
-  const photoURL = profile.photoURL!;
+  const photoURL = user.photoURL!;
 
   return (
-    <div className='page'>
+    <div className={classnames('page', styles.settings_container)}>
       <div className={styles.image_container}>
         <img aria-hidden src={photoURL} alt='photoURL' />
         <div>
@@ -34,42 +32,40 @@ export const SettingsPage = () => {
           />
         </div>
       </div>
-
-      <ul className={styles.settings}>
-        <li>
-          <Setting label='User id' value={profile.uid} />
-        </li>
-        {profile.email && (
+      <div className='card'>
+        <ul className={styles.settings}>
           <li>
-            <Setting label='Email' value={profile.email} />
+            <Setting label='User id' value={user.uid} />
           </li>
-        )}
-        {profile.displayName && (
+          {user.email && (
+            <li>
+              <Setting label='Email' value={user.email} />
+            </li>
+          )}
+          {user.displayName && (
+            <li>
+              <Setting
+                label='Your name'
+                value={user.displayName}
+                onClick={() => setSelectedSetting({ type: 'displayName', value: user.displayName })}
+              />
+            </li>
+          )}
+
           <li>
             <Setting
-              label='Your name'
-              value={profile.displayName}
-              onClick={() =>
-                setSelectedSetting({ type: 'displayName', value: profile.displayName })
-              }
+              label='City'
+              value={user.city ?? 'no data'}
+              onClick={() => setSelectedSetting({ type: 'city', value: user.city ?? '' })}
             />
           </li>
-        )}
-
-        <li>
-          <Setting
-            label='City'
-            value={profile.city ?? 'no data'}
-            onClick={() => setSelectedSetting({ type: 'city', value: profile.city ?? '' })}
-          />
-        </li>
-      </ul>
-
+        </ul>
+      </div>
       <UploadPhotoModal
+        uid={user.uid}
         isShowing={isShowUploadPhotoModal}
         onClose={() => setIsShowUploadPhotoModal(false)}
       />
-
       <SettingChangeModal setting={selectedSetting} onClose={() => setSelectedSetting(null)} />
     </div>
   );

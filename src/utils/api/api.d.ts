@@ -31,7 +31,7 @@ interface RequestInfinityQuerySettings<Func = {}> {
   >;
 }
 
-interface RequestQueryParams<Params = {}, Func = {}> {
+interface RequestQueryParams<Params = {}> {
   params: Params;
 }
 

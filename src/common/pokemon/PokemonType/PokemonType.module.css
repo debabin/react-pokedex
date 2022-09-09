@@ -6,16 +6,32 @@
   @apply border-2 border-green-700 text-green-700;
 }
 
+:global(.dark) .grass {
+  @apply border-green-500 text-green-500;
+}
+
 .poison {
   @apply border-2 border-purple-700 text-purple-700;
+}
+
+:global(.dark) .poison {
+  @apply border-purple-500 text-purple-500;
 }
 
 .fire {
   @apply border-2 border-orange-600 text-orange-600;
 }
 
+:global(.dark) .fire {
+  @apply border-orange-500 text-orange-500;
+}
+
 .flying {
   @apply border-2 border-sky-600 text-sky-600;
+}
+
+:global(.dark) .flying {
+  @apply border-sky-500 text-sky-500;
 }
 
 .water {
@@ -30,30 +46,78 @@
   @apply border-2 border-yellow-700 text-yellow-700;
 }
 
+:global(.dark) .ground {
+  @apply border-yellow-500 text-yellow-500;
+}
+
 .dark {
   @apply border-2 border-slate-600 text-slate-600;
+}
+
+:global(.dark) .dark {
+  @apply border-slate-300 text-slate-300;
 }
 
 .ice {
   @apply border-2 border-cyan-600 text-cyan-600;
 }
 
+:global(.dark) .ice {
+  @apply border-cyan-500 text-cyan-500;
+}
+
+.dragon {
+  @apply border-2 border-cyan-600 text-cyan-600;
+}
+
+:global(.dark) .dragon {
+  @apply border-cyan-500 text-cyan-500;
+}
+
 .fairy {
   @apply border-2 border-pink-700 text-pink-700;
+}
+
+:global(.dark) .fairy {
+  @apply border-pink-500 text-pink-500;
 }
 
 .psychic {
   @apply border-2 border-violet-700 text-violet-700;
 }
 
+:global(.dark) .psychic {
+  @apply border-violet-500 text-violet-500;
+}
+
 .bug {
   @apply border-2 border-lime-600 text-lime-600;
+}
+
+:global(.dark) .bug {
+  @apply border-lime-500 text-lime-500;
 }
 
 .normal {
   @apply border-2 border-neutral-600 text-neutral-600;
 }
 
+:global(.dark) .normal {
+  @apply border-neutral-300 text-neutral-300;
+}
+
 .fighting {
   @apply border-2 border-red-700 text-red-700;
+}
+
+:global(.dark) .fighting {
+  @apply border-red-500 text-red-500;
+}
+
+.rock {
+  @apply border-2 border-gray-700 text-gray-700;
+}
+
+:global(.dark) .rock {
+  @apply border-gray-300 text-gray-300;
 }

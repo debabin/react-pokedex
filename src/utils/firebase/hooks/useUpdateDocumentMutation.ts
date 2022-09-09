@@ -3,14 +3,6 @@ import { useMutation } from '@tanstack/react-query';
 import { Collection } from '../instance';
 import { updateDocument } from '../requests';
 
-export interface UserDocument extends User {}
-
-export interface PokemonDocument {
-  uid: User['uid'];
-  name: Pokemon['name'];
-  id: Pokemon['id'];
-}
-
 interface UseUpdateDocumentPokemonMutationParams {
   collection: Extract<Collection, 'pokemons'>;
   data: Partial<PokemonDocument>;

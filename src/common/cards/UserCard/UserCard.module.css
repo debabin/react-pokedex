@@ -1,12 +1,12 @@
-.card {
-  @apply flex gap-5 rounded-lg bg-white p-5  shadow-md;
+.content {
+  @apply flex flex-col gap-5;
 }
 
-.card .uid {
+.content .uid {
   @apply flex-wrap text-lg font-bold;
 }
 
-.card img {
+.content img {
   @apply w-20 rounded-lg;
 }
 
@@ -14,10 +14,34 @@
   @apply font-normal;
 }
 
+.display_name {
+  @apply text-2xl font-light;
+}
+
 .body {
   @apply flex gap-5;
 }
 
-.display_name {
-  @apply text-2xl font-light;
+.pokemons {
+  @apply grid grid-cols-3 gap-y-3 rounded-lg bg-blue-100 p-3;
+}
+
+:global(.dark) .pokemons {
+  @apply bg-slate-600;
+}
+
+.pokemon {
+  @apply flex justify-center;
+}
+
+.pokemon div {
+  @apply h-16 w-16 items-center overflow-hidden rounded-full border-2 border-blue-300;
+}
+
+:global(.dark) .pokemons {
+  @apply border-blue-600;
+}
+
+.pokemon div img {
+  transform: scale(1.5);
 }

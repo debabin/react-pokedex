@@ -8,7 +8,7 @@ interface PokemonStatsProps {
 }
 
 export const PokemonStats: React.FC<PokemonStatsProps> = ({ title, stats }) => (
-  <div>
+  <div className='card'>
     <div className={styles.title}>{title}</div>
     <ul className={styles.stats}>
       {stats.map((item) => (

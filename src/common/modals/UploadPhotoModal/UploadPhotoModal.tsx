@@ -1,19 +1,19 @@
 import React from 'react';
 
 import { Button } from '@common';
-import { useStore } from '@utils/contexts';
 import { useUpdateDocumentMutation, useUploadFile } from '@utils/firebase';
 
 import type { ModalProps } from '../Modal/Modal';
 import { Modal } from '../Modal/Modal';
 
-interface UploadPhotoModalProps extends Omit<ModalProps, 'children' | 'loading'> {}
+interface UploadPhotoModalProps extends Omit<ModalProps, 'children' | 'loading'> {
+  uid: User['uid'];
+}
 
-export const UploadPhotoModal: React.FC<UploadPhotoModalProps> = ({ onClose, ...props }) => {
+export const UploadPhotoModal: React.FC<UploadPhotoModalProps> = ({ onClose, uid, ...props }) => {
   const [loading, setLoading] = React.useState(false);
-  const { user } = useStore();
-  const photoName = `photo_${user.uid}`;
 
+  const photoName = `photo_${uid}`;
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const { uploadFile, progresspercent } = useUploadFile(photoName);
   const updateDocumentMutation = useUpdateDocumentMutation();
@@ -26,7 +26,7 @@ export const UploadPhotoModal: React.FC<UploadPhotoModalProps> = ({ onClose, ...
     await updateDocumentMutation.mutateAsync({
       collection: 'users',
       data: { photoURL: result?.url },
-      id: user.uid
+      id: uid
     });
 
     onClose();

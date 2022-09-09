@@ -1,17 +1,11 @@
-import { User } from 'firebase/auth';
-import { collection, query, where } from 'firebase/firestore';
+import { collection, Query, query } from 'firebase/firestore';
 
 import { database } from '../instance';
 
-import { UserDocument } from './useAddDocumentMutation';
 import { useCollection } from './useCollection';
 
-interface UseUserPokemonsCollectionParams {
-  uid: User['uid'];
-}
-
-export const useUsersCollection = ({ uid }: UseUserPokemonsCollectionParams) => {
-  const q = query<$TSFixMe>(collection(database, 'users'), where('uid', '==', uid));
+export const useUsersCollection = () => {
+  const q = query(collection(database, 'users')) as Query<UserDocument>;
 
   return useCollection<UserDocument>(q);
 };

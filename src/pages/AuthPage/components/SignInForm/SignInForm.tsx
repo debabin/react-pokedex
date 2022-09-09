@@ -2,10 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, Input } from '@common';
-import { AUTH_COOKIE, emailSchema, passwordSchema, ROUTES } from '@utils/constants';
+import { emailSchema, passwordSchema, ROUTES } from '@utils/constants';
 import { useStore } from '@utils/contexts';
 import { useLogInWithEmailAndPasswordMutation } from '@utils/firebase';
-import { getUserFieldsFromFireBase, setCookie } from '@utils/helpers';
 
 import styles from '../../AuthPage.module.css';
 
@@ -21,9 +20,8 @@ export const SignInForm: React.FC = () => {
   const { register, handleSubmit, formState } = useForm<SignInFormValues>({ mode: 'onBlur' });
   const logInWithEmailAndPassword = useLogInWithEmailAndPasswordMutation({
     options: {
-      onSuccess: ({ user }) => {
-        setCookie(AUTH_COOKIE, user.uid);
-        setStore({ session: { isLoginIn: true }, user: getUserFieldsFromFireBase(user) });
+      onSuccess: () => {
+        setStore({ session: { isLoginIn: true } });
         navigate(ROUTES.POKEMONS);
       }
     }

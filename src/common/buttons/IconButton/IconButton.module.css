@@ -34,9 +34,15 @@
 .icon[type='button'],
 .icon[type='reset'],
 .icon[type='submit'] {
-  @apply bg-inherit fill-neutral-500 shadow-none;
+  @apply bg-inherit fill-neutral-500 stroke-neutral-500 shadow-none;
   @apply hover:fill-neutral-400;
   @apply active:fill-neutral-500;
+}
+
+:global(.dark) .icon {
+  @apply bg-inherit fill-slate-300 stroke-slate-300 shadow-none;
+  @apply hover:fill-slate-200;
+  @apply active:fill-slate-200;
 }
 
 .button svg {

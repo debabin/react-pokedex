@@ -2,10 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, Divider, GoogleButton } from '@common';
-import { AUTH_COOKIE, ROUTES } from '@utils/constants';
+import { ROUTES } from '@utils/constants';
 import { useStore } from '@utils/contexts';
 import { useLogInWithGoogleMutation } from '@utils/firebase';
-import { setCookie } from '@utils/helpers';
 
 import { SignInForm } from './components/SignInForm/SignInForm';
 import { SignUpForm } from './components/SignUpForm/SignUpForm';
@@ -20,9 +19,8 @@ export const AuthPage = () => {
 
   const { mutate: logInWithGoogleMutate } = useLogInWithGoogleMutation({
     options: {
-      onSuccess: ({ user }) => {
-        setCookie(AUTH_COOKIE, user.uid);
-        setStore({ session: { isLoginIn: true }, user });
+      onSuccess: () => {
+        setStore({ session: { isLoginIn: true } });
         navigate(ROUTES.POKEMONS);
       }
     }

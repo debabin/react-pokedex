@@ -1,12 +1,9 @@
 import classnames from 'classnames';
 
-import { Button } from '@common';
-
 import styles from './Modal.module.css';
 
 export interface ModalProps {
   isShowing: boolean;
-
   onClose: () => void;
   children: React.ReactNode;
 }

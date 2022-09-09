@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const usePromise = <T>() => {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [data, setData] = React.useState<T | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 

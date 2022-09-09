@@ -8,7 +8,6 @@ export const updateDocument = async <T extends WithFieldValue<DocumentData>>(
   id: string
 ) => {
   const documentRef = doc(database, collection, id);
-  console.log('@', documentRef, id);
 
   await updateDoc(documentRef, data);
 

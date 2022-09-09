@@ -1,4 +1,3 @@
-import { User } from 'firebase/auth';
 import React from 'react';
 
 import { useAuthState } from '@utils/firebase';
@@ -11,25 +10,23 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
-  const { user } = useAuthState();
+  const authState = useAuthState();
   const [store, setStore] = React.useState<StoreContextProps['store']>({
     session: {
       isLoginIn: false
-    },
-    user: {} as User
+    }
   });
 
   React.useEffect(() => {
-    if (user) {
+    if (authState.data) {
       setStore({
         ...store,
         session: {
           isLoginIn: true
-        },
-        user
+        }
       });
     }
-  }, [user]);
+  }, [authState.data]);
 
   const value = React.useMemo(
     () => ({

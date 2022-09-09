@@ -2,17 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { Button, Input } from '@common';
-import {
-  AUTH_COOKIE,
-  citySchema,
-  emailSchema,
-  nameSchema,
-  passwordSchema,
-  ROUTES
-} from '@utils/constants';
+import { citySchema, emailSchema, nameSchema, passwordSchema, ROUTES } from '@utils/constants';
 import { useStore } from '@utils/contexts';
 import { useRegisterWithEmailAndPasswordMutation } from '@utils/firebase';
-import { getUserFieldsFromFireBase, setCookie } from '@utils/helpers';
 
 import styles from '../../AuthPage.module.css';
 
@@ -27,9 +19,8 @@ export const SignUpForm: React.FC = () => {
   const { register, handleSubmit, formState, setError } = useForm<SignUpFormValues>();
   const registerWithEmailAndPasswordMutation = useRegisterWithEmailAndPasswordMutation({
     options: {
-      onSuccess: ({ user }) => {
-        setCookie(AUTH_COOKIE, user.uid);
-        setStore({ session: { isLoginIn: true }, user: getUserFieldsFromFireBase(user) });
+      onSuccess: () => {
+        setStore({ session: { isLoginIn: true } });
         navigate(ROUTES.POKEMONS);
       },
       onError: (error) => {

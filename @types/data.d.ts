@@ -1,11 +1,24 @@
 type User = {
   city?: string;
-  displayName: import('firebase/auth').User['displayName'];
-  email: import('firebase/auth').User['email'];
+  displayName: Include<import('firebase/auth').User['displayName'], string>;
+  email: Include<import('firebase/auth').User['email'], string>;
   phoneNumber: import('firebase/auth').User['phoneNumber'];
   photoURL: import('firebase/auth').User['photoURL'];
   uid: import('firebase/auth').User['uid'];
+  pokemons: {
+    name: Pokemon['name'];
+    id: Pokemon['id'];
+    image: Pokemon['sprites']['front_default'];
+  }[];
 };
+
+interface UserDocument extends User {}
+
+interface PokemonDocument {
+  uid: User['uid'];
+  name: Pokemon['name'];
+  id: Pokemon['id'];
+}
 
 /**
  * The name and the URL of the referenced resource

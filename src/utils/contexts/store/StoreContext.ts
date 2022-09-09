@@ -4,7 +4,6 @@ export type Store = {
   session: {
     isLoginIn: boolean;
   };
-  user: User;
 };
 
 export interface StoreContextProps {
@@ -12,11 +11,10 @@ export interface StoreContextProps {
   setStore: React.Dispatch<React.SetStateAction<Store>>;
 }
 
-export const INITIAL_STORE = {
+export const INITIAL_STORE: Store = {
   session: {
     isLoginIn: false
-  },
-  user: {} as User
+  }
 };
 
 export const StoreContext = React.createContext<StoreContextProps>({

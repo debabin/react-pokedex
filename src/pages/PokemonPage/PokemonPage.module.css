@@ -4,7 +4,7 @@
 
 .name_container {
   @apply flex items-end justify-start gap-2;
-  @apply text-2xl font-bold capitalize text-black;
+  @apply text-2xl font-bold capitalize;
 }
 
 .number {
@@ -15,10 +15,20 @@
   @apply flex flex-col gap-3;
 }
 
+@screen md {
+  .content {
+    @apply flex-row justify-between;
+  }
+
+  .content div {
+    @apply w-full;
+  }
+}
+
 .image_container img {
   @apply h-full w-full;
 }
 
 .button_container {
-  @apply flex flex-col gap-2;
+  @apply flex gap-2;
 }
